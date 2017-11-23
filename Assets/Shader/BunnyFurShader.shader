@@ -67,7 +67,7 @@
 				float2 centerTex = (IN[0].uv + IN[1].uv + IN[2].uv) / 3;
 				centerPos += float4(normalFace, 0) * _FurFactor;
 
-				for (int i = 0; i < 3; i++)
+				for (uint i = 0; i < 3; i++)
 				{
 					o.vertex = UnityObjectToClipPos(IN[i].vertex);
 					o.uv = IN[i].uv;
@@ -75,9 +75,9 @@
 
 					tristream.Append(o);
 
-					int inext = (i + 1) % 3;
-					o.vertex = UnityObjectToClipPos(IN[inext].vertex);
-					o.uv = IN[inext].uv;
+					uint index = (i + 1) % 3;
+					o.vertex = UnityObjectToClipPos(IN[index].vertex);
+					o.uv = IN[index].uv;
 					o.col = fixed4(0., 0., 0., 1.);
 
 					tristream.Append(o);
